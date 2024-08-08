@@ -61,7 +61,7 @@ def main():
 
 
     
-    tk.Button(root, text="Fill", command=lambda: fill_disk_space(entry.get(), selected.get(), root)).pack()
+    tk.Button(root, text="Fill", command=lambda: fill_disk_space(entry.get(), selected.get(), root, filetype_select.get())).pack()
 
 
     root.mainloop()
