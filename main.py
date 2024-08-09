@@ -1,7 +1,5 @@
 import os
 import random
-import time
-import shutil
 import sys
 import tkinter as tk
 import tkinter.ttk as ttk
@@ -9,10 +7,22 @@ import secrets
 from tkinter import messagebox
 
 
+checks = {
+    "debugCheck": False
+}
+
+
+def debugCheck():
+    if len(sys.argv) > 1 and sys.argv[1] == "safe":
+        print("Function debugCheck() says: Debug mode is activated")
+        return True
+    return False
+
+
 def main():
     root = tk.Tk()
     root.title("Disk Space Filler")
-    #root.geometry("400x200")
+    # root.geometry("400x200")
     root.resizable(False, False)
 
     selected = tk.StringVar()
@@ -56,6 +66,7 @@ def main():
     root.mainloop()
 
 
+# noinspection PyTypeChecker
 def fill_disk_space(megabytes, is_secure, master, filetype):
     try:
         megabytes = int(megabytes)
@@ -71,23 +82,24 @@ def fill_disk_space(megabytes, is_secure, master, filetype):
     progress_var = tk.DoubleVar()
     progress_bar = ttk.Progressbar(indicator, orient="horizontal", mode="determinate", maximum=megabytes,
                                    variable=progress_var)
-    progress_bar.pack(pady=20)
+    progress_bar.pack(pady=1)
 
     try:
         filetype = str(filetype)
     except ValueError:
         filetype = "txt"
 
-    for i in range(0, megabytes):
-        file = open(f"{i * random.randint(0, 245)}.{filetype}", "wb")
-
+    for i in range(0, int(megabytes)):
         if is_secure:
             data = secrets.token_bytes(1024 * 1024)
         else:
             data = os.urandom(1024 * 1024)
 
-        file.write(data)
-        file.close()
+        if not checks["debugCheck"]:
+            file = open(f"{i * random.randint(0, 245)}.{filetype}", "wb")
+
+            file.write(data)
+            file.close()
 
         progress_var.set(i / megabytes * 100)
         master.update_idletasks()
@@ -98,4 +110,6 @@ def fill_disk_space(megabytes, is_secure, master, filetype):
 
 
 if __name__ == "__main__":
+
+    checks["debugCheck"] = debugCheck()
     main()
