@@ -1,24 +1,22 @@
 # Disk Space Filler
- A simple tool to fill up disk space as much as you want
 
- ## Requirements
+A simple tool to fill up disk space as much as you want.
 
- Python 3.9+ or prebuild(probably outdated)
+## Requirements
 
-## How to run?
+- Python 3.9+ or prebuilt (probably outdated)
 
-Latest commit(recommended)
+## How to Run
 
-1. Clone this repo or just download it
-2. Run the script(for example "python3 main.py")
+### Latest Commit (Recommended)
 
-Prebuilt(only for windows at this moment)
+1. Clone this repo or just download it.
+2. Run the script (for example: `python3 main.py`).
 
-1. Download <a href="https://github.com/enorsu/PythonDiskSpaceFiller/releases/download/v1.0.0/Filler.exe">this</a> and run it
+### Prebuilt (Only for Windows at This Moment)
 
- ## Example uses
+1. Download [this](https://github.com/enorsu/PythonDiskSpaceFiller/releases/download/v1.0.0/Filler.exe) and run it.
 
-For example if you want to sell a usb or something like that
-deleting the files isn't enough
-people can still recover them using other tools
-but if you use this tool to fill up the drive and then delete all the files then your original files are unrecovarable
+## Example Uses
+
+For example, if you want to sell a USB drive or something similar, simply deleting the files isn't enough. People can still recover them using various tools. However, if you use this tool to fill up the drive and then delete all the files, your original files become unrecoverable.
