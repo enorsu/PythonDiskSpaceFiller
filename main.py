@@ -80,7 +80,7 @@ def fill_disk_space(megabytes, is_secure, master, filetype):
     indicator.resizable(0, 0)
 
     progress_var = tk.DoubleVar()
-    progress_bar = ttk.Progressbar(indicator, orient="horizontal", mode="determinate", maximum=megabytes,
+    progress_bar = ttk.Progressbar(indicator, orient="horizontal", mode="determinate", maximum=100,
                                    variable=progress_var)
     progress_bar.pack(pady=1)
 
@@ -96,12 +96,12 @@ def fill_disk_space(megabytes, is_secure, master, filetype):
             data = os.urandom(1024 * 1024)
 
         if not checks["debugCheck"]:
-            file = open(f"{i * random.randint(0, 245)}.{filetype}", "wb")
+            file = open(f"{i * i}.{filetype}", "wb")
 
             file.write(data)
             file.close()
 
-        progress_var.set(i / megabytes * 100)
+        progress_var.set(i / megabytes * 101)
         master.update_idletasks()
 
     indicator.destroy()
